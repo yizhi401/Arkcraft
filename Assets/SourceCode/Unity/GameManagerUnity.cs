@@ -12,6 +12,8 @@ public class GameManagerUnity : MonoBehaviour
         PAUSE
     }
 
+    public GameObject mainCanvas;
+
     public CubeWorld.World.CubeWorld world;
 
     public Material material;
@@ -74,6 +76,27 @@ public class GameManagerUnity : MonoBehaviour
 		Screen.autorotateToPortraitUpsideDown = false;
 		WidthRatio = Screen.width / virtualWidth;
 		HeightRatio = Screen.height / virtualWidth;
+
+        LoadGUI();
+    }
+
+    private void LoadGUI()
+    {
+        switch (state)
+        {
+            case GameManagerUnityState.GENERATING:
+                if (worldManagerUnity.worldGeneratorProcess != null)
+                    mainMenu.DrawGeneratingProgress(worldManagerUnity.worldGeneratorProcess.ToString(), worldManagerUnity.worldGeneratorProcess.GetProgress());
+                break;
+
+            case GameManagerUnityState.MAIN_MENU:
+                mainMenu.Draw();
+                break;
+
+            case GameManagerUnityState.PAUSE:
+                mainMenu.DrawPause();
+                break;
+        }
     }
 
     public void DestroyWorld()
@@ -196,7 +219,7 @@ public class GameManagerUnity : MonoBehaviour
         GetComponent<Camera>().enabled = false;
 
         HideMenu();
-		LockCursor ();
+		LockCursor();
 
         State = GameManagerUnityState.GAME;
         Debug.Log("Start Game Now!");
@@ -205,7 +228,7 @@ public class GameManagerUnity : MonoBehaviour
     public void Pause()
     {
         ShowMenu();
-		ReleaseCursor ();
+		ReleaseCursor();
 
         State = GameManagerUnityState.PAUSE;
     }
@@ -213,7 +236,7 @@ public class GameManagerUnity : MonoBehaviour
     public void Unpause()
     {
         HideMenu();
-		LockCursor ();
+		LockCursor();
 
         State = GameManagerUnityState.GAME;
     }
@@ -299,6 +322,7 @@ public class GameManagerUnity : MonoBehaviour
 
     public void OnGUI()
     {
+        return;
         switch (state)
         {
             case GameManagerUnityState.GENERATING:
@@ -314,7 +338,6 @@ public class GameManagerUnity : MonoBehaviour
                 mainMenu.DrawPause();
                 break;
         }
-
         if (internalErrorLog != null)
         {
             GUI.TextArea(new Rect(0, 0, Screen.width, Screen.height / 4), internalErrorLog);
