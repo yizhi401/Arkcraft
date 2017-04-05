@@ -675,6 +675,11 @@ namespace CubeWorld.Tiles
             return tiles[pos.x | (pos.y << sizeXbits) | (pos.z << sizeXBitsYBits)].LightSourceLuminance;
         }
 
+        /// <summary>
+        /// 获取一个tile是不是在整个世界中
+        /// </summary>
+        /// <param name="pos"></param>
+        /// <returns></returns>
         public bool IsValidTile(TilePosition pos)
         {
             return pos.x >= 0 && pos.x < sizeX && pos.y >= 0 && pos.y < sizeY && pos.z >= 0 && pos.z < sizeZ;

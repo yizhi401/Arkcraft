@@ -11,6 +11,8 @@ namespace CubeWorld.Sectors
 
         public CubeWorld.World.CubeWorld world;
 
+        //starting point of (0,0,0) in this sector
+        //used for calculation
         public TilePosition tileOffset;
 
         private ISectorGraphics sectorGraphics;

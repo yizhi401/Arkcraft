@@ -53,6 +53,22 @@ public class MainMenu
         DeactivateAll();
 
     }
+    public void ShowMenu(bool isPause)
+    {
+        gameCanvas.SetActive(true);
+        if (isPause)
+        {
+            DrawMenuPause();
+        }else
+        {
+            Draw();
+        }
+    }
+
+    public void HideMenu()
+    {
+        gameCanvas.SetActive(false);
+    }
 
     public enum MainMenuState
     {
@@ -138,6 +154,7 @@ public class MainMenu
         }
     }
 
+
     void DrawMenuLoadSave(bool load)
     {
         DeactivateAll();
@@ -166,6 +183,7 @@ public class MainMenu
                     prefix = "Overwrite World";
 
                 btns[i].GetComponentInChildren<Text>().text = prefix + (i + 1).ToString() + " [ " + fileDateTime.ToString() + " ]";
+                btns[i].onClick.RemoveAllListeners();
                 btns[i].onClick.AddListener(delegate()
                 {
                     if (load)
@@ -184,6 +202,7 @@ public class MainMenu
             else
             {
                 btns[i].GetComponentInChildren<Text>().text = "-- Empty Slot --";
+                btns[i].onClick.RemoveAllListeners();
                 btns[i].onClick.AddListener(delegate ()
                 {
                     if (load == false)
@@ -197,6 +216,7 @@ public class MainMenu
             }
         }
         btns[5].GetComponentInChildren<Text>().text = "Back";
+        btns[5].onClick.RemoveAllListeners();
         btns[5].onClick.AddListener(delegate()
         {
             state = MainMenuState.NORMAL;
@@ -220,30 +240,40 @@ public class MainMenu
             pauseMenu.transform.FindChild("Recreate").gameObject.SetActive(false);
         }
 
-        pauseMenu.transform.FindChild("Recreate").
-            GetComponent<Button>().onClick.AddListener(delegate (){
+        Button b = pauseMenu.transform.FindChild("Recreate").
+            GetComponent<Button>();
+        b.onClick.RemoveAllListeners();
+        b.onClick.AddListener(delegate (){
                 gameManagerUnity.worldManagerUnity.CreateRandomWorld(lastConfig);
             });
 
-        pauseMenu.transform.FindChild("Save").
-            GetComponent<Button>().onClick.AddListener(delegate (){
+        b = pauseMenu.transform.FindChild("Save").
+            GetComponent<Button>();
+        b.onClick.RemoveAllListeners();
+        b.onClick.AddListener(delegate (){
                 state = MainMenuState.SAVE;
                 Draw();
             });
 
-        pauseMenu.transform.FindChild("Options").
-            GetComponent<Button>().onClick.AddListener(delegate (){
+        b = pauseMenu.transform.FindChild("Options").
+            GetComponent<Button>();
+        b.onClick.RemoveAllListeners();
+        b.onClick.AddListener(delegate (){
                 state = MainMenuState.OPTIONS;
                 Draw();
             });
 
-        pauseMenu.transform.FindChild("Options").
-            GetComponent<Button>().onClick.AddListener(delegate (){
+        b = pauseMenu.transform.FindChild("Options").
+            GetComponent<Button>();
+        b.onClick.RemoveAllListeners();
+        b.onClick.AddListener(delegate (){
                 gameManagerUnity.ReturnToMainMenu();
             });
 
-        pauseMenu.transform.FindChild("Options").
-            GetComponent<Button>().onClick.AddListener(delegate (){
+        b = pauseMenu.transform.FindChild("Options").
+            GetComponent<Button>();
+        b.onClick.RemoveAllListeners();
+        b.onClick.AddListener(delegate (){
                 gameManagerUnity.Unpause();
             });
     }
@@ -254,6 +284,7 @@ public class MainMenu
         mainMenu.SetActive(true);
 
         Button createBtn = mainMenu.transform.FindChild("Create").GetComponent<Button>();
+        createBtn.onClick.RemoveAllListeners();
         createBtn.onClick.AddListener(delegate ()
         {
             state = MainMenuState.GENERATOR;
@@ -261,6 +292,7 @@ public class MainMenu
         });
 
         Button loadBtn = mainMenu.transform.FindChild("Load").GetComponent<Button>();
+        loadBtn.onClick.RemoveAllListeners();
         loadBtn.onClick.AddListener(delegate()
         {
             state = MainMenuState.LOAD;
@@ -268,6 +300,7 @@ public class MainMenu
         });
 
         Button optionBtn = mainMenu.transform.FindChild("Options").GetComponent<Button>();
+        optionBtn.onClick.RemoveAllListeners();
         optionBtn.onClick.AddListener(delegate() 
         {
             state = MainMenuState.OPTIONS;
@@ -275,6 +308,7 @@ public class MainMenu
         });
 
         Button aboutBtn = mainMenu.transform.FindChild("About").GetComponent<Button>();
+        aboutBtn.onClick.RemoveAllListeners();
         aboutBtn.onClick.AddListener(delegate() 
         {
             state = MainMenuState.ABOUT;
@@ -282,8 +316,10 @@ public class MainMenu
         });
 
         Button quitBtn = mainMenu.transform.FindChild("Quit").GetComponent<Button>();
+        quitBtn.onClick.RemoveAllListeners();
         quitBtn.onClick.AddListener(delegate() 
         {
+            Debug.Log("Quit Game");
             Application.Quit();
         });
 
@@ -295,6 +331,7 @@ public class MainMenu
     private WWW wwwRequest;
     private string[] servers;
 
+    /**
     void DrawJoinMultiplayer()
     {
         MenuSystem.BeginMenu("Join Multiplayer");
@@ -345,11 +382,11 @@ public class MainMenu
             wwwRequest = null;
             servers = null;
             state = MainMenuState.NORMAL;
-        }
-        );
+        });
 
         MenuSystem.EndMenu();
     }
+    **/
 
     void DrawOptions()
     {
@@ -358,6 +395,7 @@ public class MainMenu
 
         Button distance = optionsMenu.transform.FindChild("Distance").GetComponent<Button>();
         distance.GetComponentInChildren<Text>().text = "Draw Distance: " + CubeWorldPlayerPreferences.farClipPlanes[CubeWorldPlayerPreferences.viewDistance];
+        distance.onClick.RemoveAllListeners();
         distance.onClick.AddListener(delegate()
         {
             CubeWorldPlayerPreferences.viewDistance = (CubeWorldPlayerPreferences.viewDistance + 1) % CubeWorldPlayerPreferences.farClipPlanes.Length;
@@ -369,15 +407,17 @@ public class MainMenu
         });
 
         Button help = optionsMenu.transform.FindChild("Help").GetComponent<Button>();
-        distance.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
-        distance.onClick.AddListener(delegate()
+        help.onClick.RemoveAllListeners();
+        help.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
+        help.onClick.AddListener(delegate()
         {
             CubeWorldPlayerPreferences.showHelp = !CubeWorldPlayerPreferences.showHelp;
-            distance.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
+            help.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
         });
 
         Button fps = optionsMenu.transform.FindChild("FPS").GetComponent<Button>();
         fps.GetComponentInChildren<Text>().text = "Show FPS: " + CubeWorldPlayerPreferences.showFPS;
+        fps.onClick.RemoveAllListeners();
         fps.onClick.AddListener(delegate()
         {
             CubeWorldPlayerPreferences.showFPS = !CubeWorldPlayerPreferences.showFPS;
@@ -386,15 +426,17 @@ public class MainMenu
         });
 
         Button engineState = optionsMenu.transform.FindChild("EngineState").GetComponent<Button>();
-        fps.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
-        fps.onClick.AddListener(delegate()
+        engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
+        engineState.onClick.RemoveAllListeners();
+        engineState.onClick.AddListener(delegate()
         {
             CubeWorldPlayerPreferences.showEngineStats = !CubeWorldPlayerPreferences.showEngineStats;
-            fps.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
+            engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
         });
 
         Button strategy = optionsMenu.transform.FindChild("Strategy").GetComponent<Button>();
         strategy.GetComponentInChildren<Text>().text = "Visible Strategy: " + System.Enum.GetName(typeof(SectorManagerUnity.VisibleStrategy), CubeWorldPlayerPreferences.visibleStrategy);
+        strategy.onClick.RemoveAllListeners();
         strategy.onClick.AddListener(delegate()
         {
             if (System.Enum.IsDefined(typeof(SectorManagerUnity.VisibleStrategy), (int)CubeWorldPlayerPreferences.visibleStrategy + 1))
@@ -409,6 +451,7 @@ public class MainMenu
         });
 
         Button back = optionsMenu.transform.FindChild("Back").GetComponent<Button>();
+        back.onClick.RemoveAllListeners();
         back.onClick.AddListener(delegate()
         {
             CubeWorldPlayerPreferences.StorePreferences();
@@ -426,7 +469,7 @@ public class MainMenu
     private int currentGeneratorOffset = 0;
     private int currentDayInfoOffset = 0;
     private int currentGameplayOffset = 0;
-    private bool multiplayer = false;
+    //private bool multiplayer = false;
 
     void DrawGenerator()
     {
@@ -443,6 +486,7 @@ public class MainMenu
 
         Button gamePlayBtn = generateMenu.transform.FindChild("GamePlay").GetComponent<Button>();
         gamePlayBtn.GetComponentInChildren<Text>().text = "Gameplay: " + GameplayFactory.AvailableGameplays[currentGameplayOffset].name;
+        gamePlayBtn.onClick.RemoveAllListeners();
         gamePlayBtn.onClick.AddListener(delegate()
         {
             currentGameplayOffset = (currentGameplayOffset + 1) % GameplayFactory.AvailableGameplays.Length;
@@ -451,6 +495,7 @@ public class MainMenu
 
         Button worldSize = generateMenu.transform.FindChild("WorldSize").GetComponent<Button>();
         worldSize.GetComponentInChildren<Text>().text = "World Size: " + availableConfigurations.worldSizes[currentSizeOffset].name;
+        worldSize.onClick.RemoveAllListeners();
         worldSize.onClick.AddListener(delegate()
         {
             currentSizeOffset = (currentSizeOffset + 1) % availableConfigurations.worldSizes.Length;
@@ -459,6 +504,7 @@ public class MainMenu
 
         Button dayLen = generateMenu.transform.FindChild("DayLength").GetComponent<Button>();
         dayLen.GetComponentInChildren<Text>().text = "Day Length: " + availableConfigurations.dayInfos[currentDayInfoOffset].name;
+        dayLen.onClick.RemoveAllListeners();
         dayLen.onClick.AddListener(delegate()
         {
             currentDayInfoOffset = (currentDayInfoOffset + 1) % availableConfigurations.dayInfos.Length;
@@ -467,6 +513,7 @@ public class MainMenu
 
         Button generatorBtn = generateMenu.transform.FindChild("Generator").GetComponent<Button>();
         generatorBtn.GetComponentInChildren<Text>().text = "Generator: " + availableConfigurations.worldGenerators[currentGeneratorOffset].name;
+        generatorBtn.onClick.RemoveAllListeners();
         generatorBtn.onClick.AddListener(delegate()
         {
             currentGeneratorOffset = (currentGeneratorOffset + 1) % availableConfigurations.worldGenerators.Length;
@@ -489,6 +536,7 @@ public class MainMenu
 
         Button goBtn = generateMenu.transform.FindChild("Generate").GetComponent<Button>();
         goBtn.GetComponentInChildren<Text>().text = "Generate!";
+        goBtn.onClick.RemoveAllListeners();
         goBtn.onClick.AddListener(delegate ()
         {
             lastConfig = new CubeWorld.Configuration.Config();
@@ -501,21 +549,28 @@ public class MainMenu
             lastConfig.extraMaterials = availableConfigurations.extraMaterials;
             lastConfig.gameplay = GameplayFactory.AvailableGameplays[currentGameplayOffset];
 
-            if (multiplayer)
-            {
-                MultiplayerServerGameplay multiplayerServerGameplay = new MultiplayerServerGameplay(lastConfig.gameplay.gameplay, true);
+            //if (multiplayer)
+            //{
+            //    MultiplayerServerGameplay multiplayerServerGameplay = new MultiplayerServerGameplay(lastConfig.gameplay.gameplay, true);
 
-                GameplayDefinition g = new GameplayDefinition("", "", multiplayerServerGameplay, false);
+            //    GameplayDefinition g = new GameplayDefinition("", "", multiplayerServerGameplay, false);
 
-                lastConfig.gameplay = g;
+            //    lastConfig.gameplay = g;
 
-                gameManagerUnity.RegisterInWebServer();
-            }
+            //    gameManagerUnity.RegisterInWebServer();
+            //}
 
             gameManagerUnity.worldManagerUnity.CreateRandomWorld(lastConfig);
 
             availableConfigurations = null;
 
+            state = MainMenuState.NORMAL;
+            //Draw();
+            HideMenu();
+        });
+        Button backBtn = generateMenu.transform.FindChild("Back").GetComponent<Button>();
+        backBtn.onClick.RemoveAllListeners();
+        backBtn.onClick.AddListener(delegate () {
             state = MainMenuState.NORMAL;
             Draw();
         });
@@ -528,6 +583,7 @@ public class MainMenu
         aboutMenu.SetActive(true);
 
         Button backBtn = aboutMenu.transform.FindChild("Back").GetComponent<Button>();
+        backBtn.onClick.RemoveAllListeners();
         backBtn.onClick.AddListener(delegate() 
         {
             state = MainMenuState.NORMAL;

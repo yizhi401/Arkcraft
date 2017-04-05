@@ -102,50 +102,50 @@ public class WorldManagerUnity
     }
 	
 
-    public void JoinMultiplayerGame(string server, int port)
-    {
-        gameManagerUnity.DestroyWorld();
+    //public void JoinMultiplayerGame(string server, int port)
+    //{
+    //    gameManagerUnity.DestroyWorld();
 
-        worldGeneratorProcess = new GeneratorProcess(new MultiplayerGameLoaderGenerator(this, server, port), null);
+    //    worldGeneratorProcess = new GeneratorProcess(new MultiplayerGameLoaderGenerator(this, server, port), null);
 
-        gameManagerUnity.State = GameManagerUnity.GameManagerUnityState.GENERATING;
-    }
+    //    gameManagerUnity.State = GameManagerUnity.GameManagerUnityState.GENERATING;
+    //}
 
-    private class MultiplayerGameLoaderGenerator : CubeWorldGenerator
-    {
-        private MultiplayerClientGameplay mutiplayerClientGameplay;
-        private WorldManagerUnity worldManagerUnity;
+    //private class MultiplayerGameLoaderGenerator : CubeWorldGenerator
+    //{
+    //    private MultiplayerClientGameplay mutiplayerClientGameplay;
+    //    private WorldManagerUnity worldManagerUnity;
 
-        public MultiplayerGameLoaderGenerator(WorldManagerUnity worldManagerUnity, string server, int port)
-        {
-            this.worldManagerUnity = worldManagerUnity;
-            mutiplayerClientGameplay = new MultiplayerClientGameplay(server, port);
-        }
+    //    public MultiplayerGameLoaderGenerator(WorldManagerUnity worldManagerUnity, string server, int port)
+    //    {
+    //        this.worldManagerUnity = worldManagerUnity;
+    //        mutiplayerClientGameplay = new MultiplayerClientGameplay(server, port);
+    //    }
 
-        public override bool Generate(CubeWorld.World.CubeWorld world)
-        {
-            mutiplayerClientGameplay.Update(0.0f);
+    //    public override bool Generate(CubeWorld.World.CubeWorld world)
+    //    {
+    //        mutiplayerClientGameplay.Update(0.0f);
 
-            if (mutiplayerClientGameplay.initializationDataReceived)
-            {
-                GameManagerUnity gameManagerUnity = worldManagerUnity.gameManagerUnity;
+    //        if (mutiplayerClientGameplay.initializationDataReceived)
+    //        {
+    //            GameManagerUnity gameManagerUnity = worldManagerUnity.gameManagerUnity;
 
-                gameManagerUnity.world = new CubeWorld.World.CubeWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
-                gameManagerUnity.world.gameplay = mutiplayerClientGameplay;
+    //            gameManagerUnity.world = new CubeWorld.World.CubeWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
+    //            gameManagerUnity.world.gameplay = mutiplayerClientGameplay;
 
-                CubeWorld.World.CubeWorld.MultiplayerConfig config = gameManagerUnity.world.LoadMultiplayer(mutiplayerClientGameplay.initializationData);
+    //            CubeWorld.World.CubeWorld.MultiplayerConfig config = gameManagerUnity.world.LoadMultiplayer(mutiplayerClientGameplay.initializationData);
 
-                mutiplayerClientGameplay.initializationData = null;
+    //            mutiplayerClientGameplay.initializationData = null;
 
-                gameManagerUnity.extraMaterials = config.extraMaterials;
-                gameManagerUnity.surroundingsUnity.CreateSurroundings(gameManagerUnity.world.configSurroundings);
+    //            gameManagerUnity.extraMaterials = config.extraMaterials;
+    //            gameManagerUnity.surroundingsUnity.CreateSurroundings(gameManagerUnity.world.configSurroundings);
 
-                return true;
-            }
+    //            return true;
+    //        }
 
-            return false;
-        }
-    }
+    //        return false;
+    //    }
+    //}
 
 
     public CubeWorld.World.Generator.GeneratorProcess worldGeneratorProcess;

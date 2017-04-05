@@ -239,8 +239,10 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                                             lightIntensity * MeshUtils.faceBright[face]);
                                 Vector3 faceNormal = MeshUtils.faceNormals[face];
 
+                                //处理着火的情况
                                 if (tile.OnFire && MeshUtils.faceVectorsFireAvailable[face])
                                 {
+                                    //添加4个顶点，两个三角面片
                                     for (int i = 0; i < 4; i++)
                                     {
                                         vertices.Add(MeshUtils.faceVectorsFire[(face << 2) + i] + offset);
@@ -460,9 +462,11 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                 {
                     for (int x = tileOffsetX; x < SectorManager.SECTOR_SIZE + tileOffsetX; x++)
                     {
+                        //x,y,z sector中的tile在CubeWorld的坐标
                         TilePosition pos = new TilePosition(x, y, z);
 
                         Tile tile = tileManager.GetTile(pos);
+                        //空类型和动态tile不计算
                         if (tile.tileType == TileDefinition.EMPTY_TILE_TYPE || tile.Dynamic)
                             continue;
 
@@ -472,6 +476,7 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
 
                         bool drawingLiquidSurface = false;
 
+                        //如果该tile是水，并且上方的tile在世界中，且不是水
                         if (drawMode == TileDefinition.DrawMode.LIQUID &&
                             tileManager.IsValidTile(pos + new TilePosition(0, 1, 0)) &&
                             tileManager.GetTileType(pos + new TilePosition(0, 1, 0)) != tile.tileType)
@@ -492,11 +497,13 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
 
                             if (tileManager.IsValidTile(near))
                             {
+                                //相邻的tile在世界中
                                 nearTileDrawMode = tileManager.GetTileDrawMode(near);
                                 bool nearDynamic = tileManager.GetTileDynamic(near);
 
                                 TilePosition nearAbove = near + new TilePosition(0, 1, 0);
 
+                                //四周画不画水
                                 bool drawingLiquidSurfaceBorder = (drawMode == nearTileDrawMode &&
                                     drawMode == TileDefinition.DrawMode.LIQUID &&
                                     drawingLiquidSurface == false &&
@@ -511,6 +518,7 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                     nearDynamic ||
                                     drawingLiquidSurfaceBorder)
                                 {
+                                    //环境光*亮度等级 + 点光源
                                     float lightIntensity = ambientLightIntensity *
                                                             MeshUtils.luminanceMapper[tileManager.GetTileAmbientLuminance(near)] +
                                                             MeshUtils.luminanceMapper[tileManager.GetTileLightSourceLuminance(near)];

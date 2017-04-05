@@ -3,12 +3,34 @@ using CubeWorld.Tiles;
 
 public struct MeshUtils
 {
+    /// <summary>
+    /// 面上每个点的法向量
+    /// </summary>
     static public Vector3[] faceVectorsNormal;
+    /// <summary>
+    /// 火焰沿着每个点的法线向上
+    /// </summary>
     static public Vector3[] faceVectorsFire;
+    /// <summary>
+    /// 每一个面的法线
+    /// </summary>
     static public Vector3[] faceNormals;
+    /// <summary>
+    /// 除了Top和Bottom 其他的平面都可以着火
+    /// </summary>
     static public bool[] faceVectorsFireAvailable;
+    /// <summary>
+    /// 每个面的法线所对应的tile(相当于该面相邻的tile)
+    /// </summary>
     static public TilePosition[] faceNormalsTile;
+
+    /// <summary>
+    /// 每个面受到光源影响强度
+    /// </summary>
     static public float[] faceBright;
+    /// <summary>
+    /// Tile 有15个等级的亮度，每个等级为上一个等级的0.8强
+    /// </summary>
     static public float[] luminanceMapper;
 
     public const int MAX_LIQUID_LEVELS = 8;
@@ -77,9 +99,9 @@ public struct MeshUtils
 
         faceNormals[5] = Vector3.left;
 
-        faceBright[0] = faceBright[1] = 0.6f * 0.6f;
-        faceBright[2] = faceBright[3] = 1.0f * 0.6f;
-        faceBright[4] = faceBright[5] = 0.8f * 0.6f;
+        faceBright[0] = faceBright[1] = 0.6f * 0.6f; //0.36  前后
+        faceBright[2] = faceBright[3] = 1.0f * 0.6f; //0.6 上下
+        faceBright[4] = faceBright[5] = 0.8f * 0.6f; //0.48 左右
 
         for (int i = 0; i < 6; i++)
             faceNormalsTile[i] = new TilePosition((int)faceNormals[i].x, (int)faceNormals[i].y, (int)faceNormals[i].z);

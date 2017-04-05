@@ -193,32 +193,32 @@ public class GameManagerUnity : MonoBehaviour
     }
 
 
-    private bool registerInWebServer = false;
-    private WWW registerWebServerRequest;
-    private float timerUpdate = 0;
+    //private bool registerInWebServer = false;
+    //private WWW registerWebServerRequest;
+    //private float timerUpdate = 0;
 
-    public void RegisterInWebServer()
-    {
-        timerUpdate -= Time.deltaTime;
+    //public void RegisterInWebServer()
+    //{
+    //    timerUpdate -= Time.deltaTime;
 
-        registerInWebServer = true;
+    //    registerInWebServer = true;
 
-        if (timerUpdate <= 0 && (registerWebServerRequest == null || registerWebServerRequest.isDone == true))
-        {
-            string url = MainMenu.CubeworldWebServerServerRegister;
-            url = url.Replace("{owner}", "fede");
-            url = url.Replace("{description}", "cwserver");
-            url = url.Replace("{port}", CubeWorld.Gameplay.MultiplayerServerGameplay.SERVER_PORT.ToString());
-            registerWebServerRequest = new WWW(url);
-            timerUpdate = 30;
-        }
-    }
+    //    if (timerUpdate <= 0 && (registerWebServerRequest == null || registerWebServerRequest.isDone == true))
+    //    {
+    //        string url = MainMenu.CubeworldWebServerServerRegister;
+    //        url = url.Replace("{owner}", "fede");
+    //        url = url.Replace("{description}", "cwserver");
+    //        url = url.Replace("{port}", CubeWorld.Gameplay.MultiplayerServerGameplay.SERVER_PORT.ToString());
+    //        registerWebServerRequest = new WWW(url);
+    //        timerUpdate = 30;
+    //    }
+    //}
 	
     public void StartGame()
     {
         GetComponent<Camera>().enabled = false;
 
-        HideMenu();
+        mainMenu.HideMenu();
 		LockCursor();
 
         State = GameManagerUnityState.GAME;
@@ -227,7 +227,7 @@ public class GameManagerUnity : MonoBehaviour
 
     public void Pause()
     {
-        ShowMenu();
+        mainMenu.ShowMenu(true);
 		ReleaseCursor();
 
         State = GameManagerUnityState.PAUSE;
@@ -235,7 +235,7 @@ public class GameManagerUnity : MonoBehaviour
 
     public void Unpause()
     {
-        HideMenu();
+        mainMenu.HideMenu();
 		LockCursor();
 
         State = GameManagerUnityState.GAME;
@@ -252,8 +252,8 @@ public class GameManagerUnity : MonoBehaviour
 
     public void Update()
     {
-        if (registerInWebServer)
-            RegisterInWebServer();
+        //if (registerInWebServer)
+        //    RegisterInWebServer();
 
         switch (state)
         {
@@ -320,32 +320,48 @@ public class GameManagerUnity : MonoBehaviour
         }
     }
 
+    public void ShowMenu()
+    {
+        if(state == GameManagerUnityState.PAUSE)
+        {
+            mainMenu.ShowMenu(true);
+        }else
+        {
+            mainMenu.ShowMenu(false);
+        }
+    }
+
+    public void HideMenu()
+    {
+        mainMenu.HideMenu();
+    }
+
     public void OnGUI()
     {
-        return;
         switch (state)
         {
             case GameManagerUnityState.GENERATING:
+                mainMenu.HideMenu();
                 if (worldManagerUnity.worldGeneratorProcess != null)
                     mainMenu.DrawGeneratingProgress(worldManagerUnity.worldGeneratorProcess.ToString(), worldManagerUnity.worldGeneratorProcess.GetProgress());
                 break;
 
             case GameManagerUnityState.MAIN_MENU:
-                mainMenu.Draw();
+                //mainMenu.Draw();
                 break;
 
             case GameManagerUnityState.PAUSE:
-                mainMenu.DrawPause();
+                //mainMenu.DrawPause();
                 break;
         }
-        if (internalErrorLog != null)
-        {
-            GUI.TextArea(new Rect(0, 0, Screen.width, Screen.height / 4), internalErrorLog);
-            if (GUI.Button(new Rect(0, Screen.height / 4, 100 * WidthRatio, 50 * HeightRatio), "Clear Log"))
-            {
-                internalErrorLog = null;
-            }
-        }
+        //if (internalErrorLog != null)
+        //{
+        //    GUI.TextArea(new Rect(0, 0, Screen.width, Screen.height / 4), internalErrorLog);
+        //    if (GUI.Button(new Rect(0, Screen.height / 4, 100 * WidthRatio, 50 * HeightRatio), "Clear Log"))
+        //    {
+        //        internalErrorLog = null;
+        //    }
+        //}
 
     }
 
@@ -361,14 +377,6 @@ public class GameManagerUnity : MonoBehaviour
 		Cursor.visible = false;
 	}
 
-
-    public void ShowMenu()
-    {
-    }
-
-    public void HideMenu()
-    {
-    }
 
     public void PreferencesUpdated()
     {

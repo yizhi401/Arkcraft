@@ -4,6 +4,10 @@ using System.IO;
 
 namespace CubeWorld.Tiles
 {
+    /**
+     * 
+     * 封装了一个Tile的x,y,z，并提供常用的方法
+     **/
     public struct TilePosition : IEquatable<TilePosition>
     {
         public int x, y, z;
