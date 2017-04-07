@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.Configuration;
+using Arkcraft.Configuration;
 
 public class GameManagerUnity : MonoBehaviour
 {
@@ -14,7 +14,7 @@ public class GameManagerUnity : MonoBehaviour
 
     public GameObject mainCanvas;
 
-    public CubeWorld.World.CubeWorld world;
+    public Arkcraft.World.ArkWorld world;
 
     public Material material;
     public Material materialTransparent;
@@ -24,7 +24,7 @@ public class GameManagerUnity : MonoBehaviour
 
     public Material materialLiquidAnimated;
 
-    public CubeWorld.Configuration.ConfigExtraMaterials extraMaterials;
+    public Arkcraft.Configuration.ConfigExtraMaterials extraMaterials;
 
     public SurroundingsUnity surroundingsUnity;
     public WorldManagerUnity worldManagerUnity;
@@ -208,7 +208,7 @@ public class GameManagerUnity : MonoBehaviour
     //        string url = MainMenu.CubeworldWebServerServerRegister;
     //        url = url.Replace("{owner}", "fede");
     //        url = url.Replace("{description}", "cwserver");
-    //        url = url.Replace("{port}", CubeWorld.Gameplay.MultiplayerServerGameplay.SERVER_PORT.ToString());
+    //        url = url.Replace("{port}", Arkcraft.Gameplay.MultiplayerServerGameplay.SERVER_PORT.ToString());
     //        registerWebServerRequest = new WWW(url);
     //        timerUpdate = 30;
     //    }

@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
 
 public class PlayerGUI : MonoBehaviour 
 {

@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using CubeWorld.World.Objects;
+using Arkcraft.World.Objects;
 using UnityEngine;
-using CubeWorld.Tiles;
+using Arkcraft.Tiles;
 
 public class VisualDefinitionRenderUnity : MonoBehaviour
 {
@@ -13,7 +13,7 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
 
     public CWVisualDefinition visualDefinition;
     public Material material;
-    public CubeWorld.World.CubeWorld world; 
+    public Arkcraft.World.ArkWorld world; 
 
     private MeshFilter meshFilter;
     private MeshRenderer meshRenderer;
@@ -204,7 +204,7 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
                         offset += GraphicsUnity.TilePositionToVector3(d2Normal) * (((d2Normal * d2).GetSumComponents() - halfD2) - halfD2 * pivot.y);
                         offset += GraphicsUnity.TilePositionToVector3(mainNormal) * (((mainNormal * dmain).GetSumComponents() - halfDmain) - halfDmain * pivot.z);
 
-                        offset += new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+                        offset += new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
                         offset *= pixelScale;
 

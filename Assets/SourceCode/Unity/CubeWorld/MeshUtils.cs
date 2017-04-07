@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using CubeWorld.Tiles;
+using Arkcraft.Tiles;
 
 public struct MeshUtils
 {
@@ -52,50 +52,50 @@ public struct MeshUtils
         luminanceMapper = new float[Tile.MAX_LUMINANCE + 1];
 
         //back
-        faceVectorsNormal[0] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[1] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[2] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[3] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[0] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[1] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[2] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[3] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[0] = Vector3.back;
 
         //front
-        faceVectorsNormal[4] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[5] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[6] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[7] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[4] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[5] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[6] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[7] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[1] = Vector3.forward;
 
         //bottom
-        faceVectorsNormal[8] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[9] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[10] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[11] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[8] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[9] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[10] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[11] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[2] = Vector3.down;
 
         //top
-        faceVectorsNormal[12] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[13] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[14] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[15] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[12] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[13] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[14] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[15] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[3] = Vector3.up;
 
         //right
-        faceVectorsNormal[16] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[17] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[18] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[19] = new Vector3(CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[16] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[17] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[18] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[19] = new Vector3(Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[4] = Vector3.right;
 
         //left
-        faceVectorsNormal[20] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[21] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[22] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
-        faceVectorsNormal[23] = new Vector3(-CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE, -CubeWorld.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[20] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[21] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[22] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
+        faceVectorsNormal[23] = new Vector3(-Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE, -Arkcraft.Utils.Graphics.HALF_TILE_SIZE);
 
         faceNormals[5] = Vector3.left;
 
@@ -114,24 +114,24 @@ public struct MeshUtils
         {
             faceVectorsFire[i] = faceVectorsNormal[i];
 
-            if (faceVectorsFire[i].x == CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
-                faceVectorsFire[i].x += CubeWorld.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
-            else if (faceVectorsFire[i].x == -CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
-                faceVectorsFire[i].x -= CubeWorld.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
+            if (faceVectorsFire[i].x == Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
+                faceVectorsFire[i].x += Arkcraft.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
+            else if (faceVectorsFire[i].x == -Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
+                faceVectorsFire[i].x -= Arkcraft.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
 
-            if (faceVectorsFire[i].z == CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
-                faceVectorsFire[i].z += CubeWorld.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
-            else if (faceVectorsFire[i].z == -CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
-                faceVectorsFire[i].z -= CubeWorld.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
+            if (faceVectorsFire[i].z == Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
+                faceVectorsFire[i].z += Arkcraft.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
+            else if (faceVectorsFire[i].z == -Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
+                faceVectorsFire[i].z -= Arkcraft.Utils.Graphics.HALF_TILE_SIZE * 0.1f;
         }
 
         //No fire on top or bottom face of tiles on fire
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Right] = true;
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Left] = true;
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Front] = true;
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Back] = true;
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Top] = false;
-        faceVectorsFireAvailable[(int)CubeWorld.Utils.Graphics.Faces.Bottom] = false;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Right] = true;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Left] = true;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Front] = true;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Back] = true;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Top] = false;
+        faceVectorsFireAvailable[(int)Arkcraft.Utils.Graphics.Faces.Bottom] = false;
 
         luminanceMapper[Tile.MAX_LUMINANCE] = 1.0f;
         for (int i = Tile.MAX_LUMINANCE - 1; i >= 0; i--)

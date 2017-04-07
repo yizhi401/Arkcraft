@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
-using CubeWorld.Tiles.Rules;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
-using CubeWorld.Items;
+using Arkcraft.Tiles.Rules;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
+using Arkcraft.Items;
 
 public class PlayerControllerUnity : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class PlayerControllerUnity : MonoBehaviour
 	private GameObject hand;
 	
 	private GameObject goInHand;
-	private CWObject currentObjectInHand;
+	private ACObject currentObjectInHand;
 
     private Vector3 positionHand_Tile = new Vector3(0.15f, -0.15f, 0.3f);
     private Vector3 scaleHand_Tile = new Vector3(0.1f, 0.1f, 0.1f);
@@ -204,7 +204,7 @@ public class PlayerControllerUnity : MonoBehaviour
             Vector3 cameraPos = playerUnity.transform.position + playerUnity.GetLocalHeadPosition();
             Vector3 cameraFwd = playerUnity.mainCamera.transform.forward;
 
-            CubeWorld.Utils.Graphics.RaycastTileResult raycastResult = CubeWorld.Utils.Graphics.RaycastTile(
+            Arkcraft.Utils.Graphics.RaycastTileResult raycastResult = Arkcraft.Utils.Graphics.RaycastTile(
                                                         playerUnity.player.world,
                                                         GraphicsUnity.Vector3ToCubeWorldVector3(cameraPos),
                                                         GraphicsUnity.Vector3ToCubeWorldVector3(cameraFwd),
@@ -265,7 +265,7 @@ public class PlayerControllerUnity : MonoBehaviour
                         if (playerUnity.objectInHand != null && playerUnity.objectInHand.definition.type == CWDefinition.DefinitionType.Tile)
                         {
                             TileDefinition tileDefinition = (TileDefinition) playerUnity.objectInHand.definition;
-                            TilePosition tileCreatePosition = raycastResult.position + CubeWorld.Utils.Graphics.GetFaceNormal(raycastResult.face);
+                            TilePosition tileCreatePosition = raycastResult.position + Arkcraft.Utils.Graphics.GetFaceNormal(raycastResult.face);
 
                             //Don't create tile on top of the world, because no triangles are drawn on the border!
                             if (tileCreatePosition.y < playerUnity.player.world.tileManager.sizeY - 1 &&

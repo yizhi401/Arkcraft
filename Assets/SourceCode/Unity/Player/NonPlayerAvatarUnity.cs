@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
 
 public class NonPlayerAvatarUnity : AvatarUnity
 {

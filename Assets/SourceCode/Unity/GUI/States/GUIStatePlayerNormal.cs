@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
-using CubeWorld.Gameplay;
-using CubeWorld.Gameplay.Multiplayer;
-using CubeWorld.Console;
+using Arkcraft.Gameplay;
+using Arkcraft.Gameplay.Multiplayer;
+using Arkcraft.Console;
 
 public class GUIStatePlayerNormal : GUIState
 {
     private PlayerGUI playerGUI;
     private int itemShortcutSelected;
-    private CubeWorld.Items.InventoryEntry[] inventoryShortcuts = new CubeWorld.Items.InventoryEntry[0];
+    private Arkcraft.Items.InventoryEntry[] inventoryShortcuts = new Arkcraft.Items.InventoryEntry[0];
     private bool showLog;
 
     public GUIStatePlayerNormal(PlayerGUI playerGUI)
@@ -82,7 +82,7 @@ public class GUIStatePlayerNormal : GUIState
 
         if (CubeWorldPlayerPreferences.showEngineStats)
         {
-            CubeWorld.World.CubeWorldStats stats = playerGUI.playerUnity.player.world.stats;
+            Arkcraft.World.ArkWorldStats stats = playerGUI.playerUnity.player.world.stats;
             string memStats = "Memory used: " + (System.GC.GetTotalMemory(false) / (1024 * 1024)) + " MB";
             string multiplayerStats = (MultiplayerStats.Singleton.connected) ? MultiplayerStats.Singleton.ToString() : "";
 

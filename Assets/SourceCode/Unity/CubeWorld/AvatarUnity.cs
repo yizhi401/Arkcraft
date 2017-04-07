@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using CubeWorld.Avatars;
+using Arkcraft.Avatars;
 
 public class AvatarUnity : MonoBehaviour
 {
     public GameManagerUnity gameManagerUnity;
 
-    public CubeWorld.Avatars.Avatar avatar;
+    public Arkcraft.Avatars.Avatar avatar;
 
     private GameObject body;
 
@@ -48,7 +48,7 @@ public class AvatarUnity : MonoBehaviour
         body.transform.parent = transform;
         body.transform.localPosition = new Vector3(
             0,
-            halfY - CubeWorld.Utils.Graphics.HALF_TILE_SIZE,
+            halfY - Arkcraft.Utils.Graphics.HALF_TILE_SIZE,
             0);
 
         body.transform.localRotation = Quaternion.identity;

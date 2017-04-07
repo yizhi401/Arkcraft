@@ -1,9 +1,9 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using CubeWorld.Tiles;
+using Arkcraft.Tiles;
 using Unity.CubeWorld.VisibleSectorsStrategies;
-using CubeWorld.Sectors;
+using Arkcraft.Sectors;
 
 public class SectorManagerUnity
 {

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using CubeWorld.Sectors;
-using CubeWorld.Tiles;
-using CubeWorld.Avatars;
-using CubeWorld.Utils;
+using Arkcraft.Sectors;
+using Arkcraft.Tiles;
+using Arkcraft.Avatars;
+using Arkcraft.Utils;
 
 namespace Unity.CubeWorld.VisibleSectorsStrategies
 {

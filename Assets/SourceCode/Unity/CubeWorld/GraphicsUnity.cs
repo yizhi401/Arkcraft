@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using CubeWorld.Tiles;
+using Arkcraft.Tiles;
 
 public class GraphicsUnity
 {
@@ -7,44 +7,44 @@ public class GraphicsUnity
 
     static public Vector3 TilePositionToVector3(int x, int y, int z)
     {
-        return new Vector3(x * CubeWorld.Utils.Graphics.TILE_SIZE, y * CubeWorld.Utils.Graphics.TILE_SIZE, z * CubeWorld.Utils.Graphics.TILE_SIZE);
+        return new Vector3(x * Arkcraft.Utils.Graphics.TILE_SIZE, y * Arkcraft.Utils.Graphics.TILE_SIZE, z * Arkcraft.Utils.Graphics.TILE_SIZE);
     }
 
     static public Vector3 TilePositionToVector3(TilePosition pos)
     {
-        return new Vector3(pos.x * CubeWorld.Utils.Graphics.TILE_SIZE, pos.y * CubeWorld.Utils.Graphics.TILE_SIZE, pos.z * CubeWorld.Utils.Graphics.TILE_SIZE);
+        return new Vector3(pos.x * Arkcraft.Utils.Graphics.TILE_SIZE, pos.y * Arkcraft.Utils.Graphics.TILE_SIZE, pos.z * Arkcraft.Utils.Graphics.TILE_SIZE);
     }
 
     static public TilePosition Vector3ToTilePosition(Vector3 vec)
     {
         return new TilePosition(
-            (int)Mathf.Round(vec.x / CubeWorld.Utils.Graphics.TILE_SIZE),
-            (int)Mathf.Round(vec.y / CubeWorld.Utils.Graphics.TILE_SIZE),
-            (int)Mathf.Round(vec.z / CubeWorld.Utils.Graphics.TILE_SIZE)
+            (int)Mathf.Round(vec.x / Arkcraft.Utils.Graphics.TILE_SIZE),
+            (int)Mathf.Round(vec.y / Arkcraft.Utils.Graphics.TILE_SIZE),
+            (int)Mathf.Round(vec.z / Arkcraft.Utils.Graphics.TILE_SIZE)
                 );
     }
 
     static public int FloatToTilePosition(float f)
     {
-        return (int)Mathf.Round(f / CubeWorld.Utils.Graphics.TILE_SIZE);
+        return (int)Mathf.Round(f / Arkcraft.Utils.Graphics.TILE_SIZE);
     }
 
     static public float TilePositionToFloat(int pos)
     {
-        return pos * CubeWorld.Utils.Graphics.TILE_SIZE;
+        return pos * Arkcraft.Utils.Graphics.TILE_SIZE;
     }
 
-    static public Vector3 CubeWorldVector3ToVector3(CubeWorld.Utils.Vector3 vec)
+    static public Vector3 CubeWorldVector3ToVector3(Arkcraft.Utils.Vector3 vec)
     {
         return new Vector3(vec.x, vec.y, vec.z);
     }
 
-    static public CubeWorld.Utils.Vector3 Vector3ToCubeWorldVector3(Vector3 vec)
+    static public Arkcraft.Utils.Vector3 Vector3ToCubeWorldVector3(Vector3 vec)
     {
-        return new CubeWorld.Utils.Vector3(vec.x, vec.y, vec.z);
+        return new Arkcraft.Utils.Vector3(vec.x, vec.y, vec.z);
     }
 
-    static public Color CubeWorldColorToColor(CubeWorld.Utils.Color cubeWorldColor)
+    static public Color CubeWorldColorToColor(Arkcraft.Utils.Color cubeWorldColor)
     {
         return new Color(cubeWorldColor.r, cubeWorldColor.g, cubeWorldColor.b, cubeWorldColor.a);
     }

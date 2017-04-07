@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
-using CubeWorld.World;
+using Arkcraft.World;
 using UnityEngine;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
-using CubeWorld.Items;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
+using Arkcraft.Items;
 
-public class CWFxManagerUnity : ICWFxListener
+public class CWFxManagerUnity : IACFxListener
 {
     private GameObject goContainer;
     private GameManagerUnity gameManagerUnity;
@@ -33,7 +33,7 @@ public class CWFxManagerUnity : ICWFxListener
         return clips[Random.Range(0, clips.Length)];
     }
 
-    public void PlaySound(string soundId, CubeWorld.Utils.Vector3 position)
+    public void PlaySound(string soundId, Arkcraft.Utils.Vector3 position)
     {
         if (sounds.ContainsKey(soundId))
             PlayAudioClip(soundId, GraphicsUnity.CubeWorldVector3ToVector3(position), 1.0f);
@@ -41,7 +41,7 @@ public class CWFxManagerUnity : ICWFxListener
             Debug.Log("Unknown sound: " + soundId);
     }
 
-    public void PlaySound(string soundId, CWObject fromObject)
+    public void PlaySound(string soundId, ACObject fromObject)
     {
         if (sounds.ContainsKey(soundId))
             PlayAudioClip(soundId, GraphicsUnity.CubeWorldVector3ToVector3(fromObject.position), 1.0f);
@@ -88,7 +88,7 @@ public class CWFxManagerUnity : ICWFxListener
         return freeAudioSource;
     }
 
-    public void PlayEffect(string effectId, CubeWorld.Utils.Vector3 position)
+    public void PlayEffect(string effectId, Arkcraft.Utils.Vector3 position)
     {
         if (effects.ContainsKey(effectId))
             ((GameObject) GameObject.Instantiate(effects[effectId], GraphicsUnity.CubeWorldVector3ToVector3(position), Quaternion.identity)).transform.parent = goContainer.transform;
@@ -96,7 +96,7 @@ public class CWFxManagerUnity : ICWFxListener
             Debug.Log("Unknown effect: " + effectId);
     }
 
-    public void PlayEffect(string effectId, CWObject fromObject)
+    public void PlayEffect(string effectId, ACObject fromObject)
     {
         if (effects.ContainsKey(effectId))
         {

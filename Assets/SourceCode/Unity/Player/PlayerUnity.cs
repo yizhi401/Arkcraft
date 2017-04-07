@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
-using CubeWorld.Avatars;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
+using Arkcraft.Avatars;
 
 public class PlayerUnity : AvatarUnity
 {
@@ -18,7 +18,7 @@ public class PlayerUnity : AvatarUnity
     }
 
     [HideInInspector]
-    public CWObject objectInHand;
+    public ACObject objectInHand;
 
     public override void Start()
     {
@@ -31,7 +31,7 @@ public class PlayerUnity : AvatarUnity
 
     public Vector3 GetLocalHeadPosition()
     {
-        return new Vector3(0.0f, CubeWorld.Utils.Graphics.TILE_SIZE * CubeWorld.Avatars.Player.HEAD_POSITION, 0.0f);
+        return new Vector3(0.0f, Arkcraft.Utils.Graphics.TILE_SIZE * Arkcraft.Avatars.Player.HEAD_POSITION, 0.0f);
     }
 
     public void ChangeCamera()
@@ -45,7 +45,7 @@ public class PlayerUnity : AvatarUnity
         }
         else
         {
-            mainCamera.transform.position = transform.position + new Vector3(0.0f, CubeWorld.Utils.Graphics.TILE_SIZE * CubeWorld.Avatars.Player.HEAD_POSITION, 0.0f) - mainCamera.transform.forward * 5.0f;
+            mainCamera.transform.position = transform.position + new Vector3(0.0f, Arkcraft.Utils.Graphics.TILE_SIZE * Arkcraft.Avatars.Player.HEAD_POSITION, 0.0f) - mainCamera.transform.forward * 5.0f;
             EnableBodyRender();
         }
 
@@ -63,7 +63,7 @@ public class PlayerUnity : AvatarUnity
 
         if (useExternalCamera)
         {
-            mainCamera.transform.position = transform.position + new Vector3(0.0f, CubeWorld.Utils.Graphics.TILE_SIZE * CubeWorld.Avatars.Player.HEAD_POSITION, 0.0f) - mainCamera.transform.forward * 5.0f;
+            mainCamera.transform.position = transform.position + new Vector3(0.0f, Arkcraft.Utils.Graphics.TILE_SIZE * Arkcraft.Avatars.Player.HEAD_POSITION, 0.0f) - mainCamera.transform.forward * 5.0f;
         }
     }
 	

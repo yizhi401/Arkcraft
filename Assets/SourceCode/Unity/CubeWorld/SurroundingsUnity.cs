@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.Configuration;
+using Arkcraft.Configuration;
 
 public class SurroundingsUnity : MonoBehaviour
 {
@@ -43,9 +43,9 @@ public class SurroundingsUnity : MonoBehaviour
     {
         float ambientLight = MeshUtils.luminanceMapper[gameManagerUnity.world.dayCycleManager.ambientLightLuminance];
 
-        Color surroundingFaceColor = new Color(ambientLight * MeshUtils.faceBright[(int)CubeWorld.Utils.Graphics.Faces.Top],
-                                                ambientLight * MeshUtils.faceBright[(int)CubeWorld.Utils.Graphics.Faces.Top],
-                                                ambientLight * MeshUtils.faceBright[(int)CubeWorld.Utils.Graphics.Faces.Top]);
+        Color surroundingFaceColor = new Color(ambientLight * MeshUtils.faceBright[(int)Arkcraft.Utils.Graphics.Faces.Top],
+                                                ambientLight * MeshUtils.faceBright[(int)Arkcraft.Utils.Graphics.Faces.Top],
+                                                ambientLight * MeshUtils.faceBright[(int)Arkcraft.Utils.Graphics.Faces.Top]);
 
         if (surroundingFaceColor != oldSurroundingFaceColor)
         {
@@ -91,7 +91,7 @@ public class SurroundingsUnity : MonoBehaviour
             float surroundingLevel = configSurroundings.surroundingLevel.EvaluateInt(gameManagerUnity.world);
             surroundingLevel += configSurroundings.surroundingOffsetY;
 
-            CubeWorld.World.CubeWorld world = gameManagerUnity.world;
+            Arkcraft.World.ArkWorld world = gameManagerUnity.world;
 
             goContainer = new GameObject();
             goContainer.name = "Surroundings";

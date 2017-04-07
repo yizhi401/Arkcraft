@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using CubeWorld.Gameplay;
-using CubeWorld.Configuration;
+using Arkcraft.Gameplay;
+using Arkcraft.Configuration;
 
 public class MainMenu
 {
@@ -225,7 +225,7 @@ public class MainMenu
         );
     }
 
-    private CubeWorld.Configuration.Config lastConfig; 
+    private Arkcraft.Configuration.Config lastConfig; 
 
     void DrawMenuPause()
     {
@@ -539,7 +539,7 @@ public class MainMenu
         goBtn.onClick.RemoveAllListeners();
         goBtn.onClick.AddListener(delegate ()
         {
-            lastConfig = new CubeWorld.Configuration.Config();
+            lastConfig = new Arkcraft.Configuration.Config();
             lastConfig.tileDefinitions = availableConfigurations.tileDefinitions;
             lastConfig.itemDefinitions = availableConfigurations.itemDefinitions;
             lastConfig.avatarDefinitions = availableConfigurations.avatarDefinitions;

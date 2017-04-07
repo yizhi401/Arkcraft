@@ -1,20 +1,20 @@
 using System;
 using System.Collections.Generic;
-using CubeWorld.World;
+using Arkcraft.World;
 using UnityEngine;
-using CubeWorld.Tiles;
-using CubeWorld.World.Objects;
-using CubeWorld.Items;
-using CubeWorld.Avatars;
+using Arkcraft.Tiles;
+using Arkcraft.World.Objects;
+using Arkcraft.Items;
+using Arkcraft.Avatars;
 
-public class CWObjectsManagerUnity : ICWListener
+public class CWObjectsManagerUnity : IACListener
 {
     private List<TileUnity> unityTiles = new List<TileUnity>();
 	private List<ItemUnity> unityItems = new List<ItemUnity>();
     private List<ItemTileUnity> unityItemTiles = new List<ItemTileUnity>();
     private List<AvatarUnity> unityAvatars = new List<AvatarUnity>();
 	
-	private Dictionary<CWObject, GameObject> createdGO = new Dictionary<CWObject, GameObject>();
+	private Dictionary<ACObject, GameObject> createdGO = new Dictionary<ACObject, GameObject>();
 
 	private GameManagerUnity gameManagerUnity;
 	
@@ -103,7 +103,7 @@ public class CWObjectsManagerUnity : ICWListener
         GameObject.Destroy(g);
     }
 
-    public GameObject CreateAvatarGameObject(CubeWorld.Avatars.Avatar avatar)
+    public GameObject CreateAvatarGameObject(Arkcraft.Avatars.Avatar avatar)
     {
         GameObject g;
         AvatarUnity avatarUnity;
@@ -141,7 +141,7 @@ public class CWObjectsManagerUnity : ICWListener
     }
 
    
-    public GameObject CreateGameObjectFromObject(CWObject cwObject)
+    public GameObject CreateGameObjectFromObject(ACObject cwObject)
 	{
 		GameObject go = null;
 		
@@ -160,7 +160,7 @@ public class CWObjectsManagerUnity : ICWListener
                 break;
 
             case CWDefinition.DefinitionType.Avatar:
-                go = CreateAvatarGameObject((CubeWorld.Avatars.Avatar) cwObject);
+                go = CreateAvatarGameObject((Arkcraft.Avatars.Avatar) cwObject);
                 break;
            
             default:
@@ -184,7 +184,7 @@ public class CWObjectsManagerUnity : ICWListener
 			throw new System.Exception("Unknown game object to destroy");
 	}
 
-    public GameObject FindGameObject(CWObject cwObject)
+    public GameObject FindGameObject(ACObject cwObject)
     {
         if (createdGO.ContainsKey(cwObject))
             return createdGO[cwObject];
@@ -193,18 +193,18 @@ public class CWObjectsManagerUnity : ICWListener
     }
 	
 	
-	public void CreateObject(CWObject cwobject)
+	public void CreateObject(ACObject cwobject)
 	{
 		GameObject go = CreateGameObjectFromObject(cwobject);
 		go.transform.position = GraphicsUnity.CubeWorldVector3ToVector3(cwobject.position);
 		createdGO[cwobject] = go;
 	}
 	
-	public void UpdateObject(CWObject cwobject)
+	public void UpdateObject(ACObject cwobject)
 	{
 	}
 	
-	public void DestroyObject(CWObject cwobject)
+	public void DestroyObject(ACObject cwobject)
 	{
 		GameObject go = createdGO[cwobject];
 		createdGO.Remove(cwobject);

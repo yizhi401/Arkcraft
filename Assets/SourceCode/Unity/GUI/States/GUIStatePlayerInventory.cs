@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.World.Objects;
-using CubeWorld.Tiles;
+using Arkcraft.World.Objects;
+using Arkcraft.Tiles;
 
 public class GUIStatePlayerInventory : GUIState
 {
@@ -41,7 +41,7 @@ public class GUIStatePlayerInventory : GUIState
         {
             inventoryContents = new List<GUIContent>();
 
-            foreach (CubeWorld.Items.InventoryEntry inventoryEntry in playerGUI.playerUnity.player.inventory.entries)
+            foreach (Arkcraft.Items.InventoryEntry inventoryEntry in playerGUI.playerUnity.player.inventory.entries)
             {
                 GUIContent itemContent = new GUIContent(
                     inventoryEntry.cwobject.definition.description + " [" + inventoryEntry.quantity + "]",
@@ -75,7 +75,7 @@ public class GUIStatePlayerInventory : GUIState
 
         inventoryTextures = new Dictionary<CWDefinition, Texture2D>();
 
-        foreach (CubeWorld.Items.ItemDefinition itemDefinition in playerGUI.playerUnity.gameManagerUnity.world.itemManager.itemDefinitions)
+        foreach (Arkcraft.Items.ItemDefinition itemDefinition in playerGUI.playerUnity.gameManagerUnity.world.itemManager.itemDefinitions)
         {
             if (itemDefinition.type == CWDefinition.DefinitionType.Item)
             {

@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.World.Generator;
-using CubeWorld.Gameplay;
-using CubeWorld.Configuration;
+using Arkcraft.World.Generator;
+using Arkcraft.Gameplay;
+using Arkcraft.Configuration;
 
 public class WorldManagerUnity
 {
@@ -38,7 +38,7 @@ public class WorldManagerUnity
                     {
                         System.IO.BinaryReader br = new System.IO.BinaryReader(fs);
 
-                        if (br.ReadString() == CubeWorld.World.CubeWorld.VERSION_INFO)
+                        if (br.ReadString() == Arkcraft.World.ArkWorld.VERSION_INFO)
                             worldFileInfoCache[n] = System.IO.File.GetLastWriteTime(path);
                         else
                             worldFileInfoCache[n] = System.DateTime.MinValue;
@@ -74,7 +74,7 @@ public class WorldManagerUnity
 
             byte[] data = System.IO.File.ReadAllBytes(GetWorldFilePath(n));
 
-            CubeWorld.Configuration.Config config = new CubeWorld.Configuration.Config();
+            Arkcraft.Configuration.Config config = new Arkcraft.Configuration.Config();
             config.tileDefinitions = configurations.tileDefinitions;
 			config.itemDefinitions = configurations.itemDefinitions;
 			config.avatarDefinitions = configurations.avatarDefinitions;
@@ -82,7 +82,7 @@ public class WorldManagerUnity
 
             gameManagerUnity.extraMaterials = config.extraMaterials;
 
-            gameManagerUnity.world = new CubeWorld.World.CubeWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
+            gameManagerUnity.world = new Arkcraft.World.ArkWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
             gameManagerUnity.world.Load(config, data);
             worldGeneratorProcess = null;
 
@@ -122,7 +122,7 @@ public class WorldManagerUnity
     //        mutiplayerClientGameplay = new MultiplayerClientGameplay(server, port);
     //    }
 
-    //    public override bool Generate(CubeWorld.World.CubeWorld world)
+    //    public override bool Generate(Arkcraft.World.Arkcraft world)
     //    {
     //        mutiplayerClientGameplay.Update(0.0f);
 
@@ -130,10 +130,10 @@ public class WorldManagerUnity
     //        {
     //            GameManagerUnity gameManagerUnity = worldManagerUnity.gameManagerUnity;
 
-    //            gameManagerUnity.world = new CubeWorld.World.CubeWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
+    //            gameManagerUnity.world = new Arkcraft.World.Arkcraft(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
     //            gameManagerUnity.world.gameplay = mutiplayerClientGameplay;
 
-    //            CubeWorld.World.CubeWorld.MultiplayerConfig config = gameManagerUnity.world.LoadMultiplayer(mutiplayerClientGameplay.initializationData);
+    //            Arkcraft.World.Arkcraft.MultiplayerConfig config = gameManagerUnity.world.LoadMultiplayer(mutiplayerClientGameplay.initializationData);
 
     //            mutiplayerClientGameplay.initializationData = null;
 
@@ -148,9 +148,9 @@ public class WorldManagerUnity
     //}
 
 
-    public CubeWorld.World.Generator.GeneratorProcess worldGeneratorProcess;
+    public Arkcraft.World.Generator.GeneratorProcess worldGeneratorProcess;
 
-    public void CreateRandomWorld(CubeWorld.Configuration.Config config)
+    public void CreateRandomWorld(Arkcraft.Configuration.Config config)
     {
         gameManagerUnity.DestroyWorld();
 
@@ -158,7 +158,7 @@ public class WorldManagerUnity
 
         gameManagerUnity.extraMaterials = config.extraMaterials;
 
-        gameManagerUnity.world = new CubeWorld.World.CubeWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
+        gameManagerUnity.world = new Arkcraft.World.ArkWorld(gameManagerUnity.objectsManagerUnity, gameManagerUnity.fxManagerUnity);
         worldGeneratorProcess = gameManagerUnity.world.Generate(config);
 
         gameManagerUnity.surroundingsUnity.CreateSurroundings(gameManagerUnity.world.configSurroundings);

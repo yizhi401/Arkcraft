@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.Tiles;
-using CubeWorld.Items;
+using Arkcraft.Tiles;
+using Arkcraft.Items;
 
 public class ItemTileUnity : MonoBehaviour
 {
-    public const float ITEM_TILE_SCALE = CubeWorld.Utils.Graphics.ITEM_TILE_SIZE / CubeWorld.Utils.Graphics.TILE_SIZE;
+    public const float ITEM_TILE_SCALE = Arkcraft.Utils.Graphics.ITEM_TILE_SIZE / Arkcraft.Utils.Graphics.TILE_SIZE;
     public const float ROTATION_SPEED = 180.0f;
 
     public GameManagerUnity gameManagerUnity;

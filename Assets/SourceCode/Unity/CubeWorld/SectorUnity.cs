@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
-using CubeWorld.Tiles;
-using CubeWorld.Sectors;
+using Arkcraft.Tiles;
+using Arkcraft.Sectors;
 
 public class SectorUnity : MonoBehaviour, ISectorGraphics
 {
@@ -120,7 +120,7 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
 
         mesh.Clear();
 
-        CubeWorld.World.CubeWorld world = gameManagerUnity.world;
+        Arkcraft.World.ArkWorld world = gameManagerUnity.world;
 		TileManager tileManager = world.tileManager;
 		
         colors.Clear();
@@ -219,8 +219,8 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                 drawingLiquidSurface == false && 
                                 tileManager.IsValidTile(nearAbove) &&
                                 tileManager.GetTileType(nearAbove) != tile.tileType &&
-                                face != (int)CubeWorld.Utils.Graphics.Faces.Top && 
-                                face != (int)CubeWorld.Utils.Graphics.Faces.Bottom);
+                                face != (int)Arkcraft.Utils.Graphics.Faces.Top && 
+                                face != (int)Arkcraft.Utils.Graphics.Faces.Bottom);
 
                             if (drawMode != nearTileDrawMode ||
                                  drawMode == TileDefinition.DrawMode.SOLID_ALPHA ||
@@ -285,13 +285,13 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                     {
                                         Vector3 liquidVertex = faceVectors[(face << 2) + i];
 
-                                        if (drawingLiquidSurface && liquidVertex.y == CubeWorld.Utils.Graphics.HALF_TILE_SIZE ||
-                                            drawingLiquidSurfaceBorder && liquidVertex.y == -CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
+                                        if (drawingLiquidSurface && liquidVertex.y == Arkcraft.Utils.Graphics.HALF_TILE_SIZE ||
+                                            drawingLiquidSurfaceBorder && liquidVertex.y == -Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
                                         {
-                                            if (liquidVertex.x == CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
+                                            if (liquidVertex.x == Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
                                             {
                                                 //x = 1
-                                                if (liquidVertex.z == CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
+                                                if (liquidVertex.z == Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
                                                 {
                                                     //z = 1
                                                     liquidVertex.y = liquidVertexHeights[0];
@@ -305,7 +305,7 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                             else
                                             {
                                                 //x = -1
-                                                if (liquidVertex.z == CubeWorld.Utils.Graphics.HALF_TILE_SIZE)
+                                                if (liquidVertex.z == Arkcraft.Utils.Graphics.HALF_TILE_SIZE)
                                                 {
                                                     //z = 1
                                                     liquidVertex.y = liquidVertexHeights[3];
@@ -443,7 +443,7 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
         //when the mesh is updated
         if (willRequireMeshUpdate == false)
         {
-            CubeWorld.World.CubeWorld world = gameManagerUnity.world;
+            Arkcraft.World.ArkWorld world = gameManagerUnity.world;
             TileManager tileManager = world.tileManager;
 
             Color[] colors = mesh.colors;
@@ -509,8 +509,8 @@ public class SectorUnity : MonoBehaviour, ISectorGraphics
                                     drawingLiquidSurface == false &&
                                     tileManager.IsValidTile(nearAbove) &&
                                     tileManager.GetTileType(nearAbove) != tile.tileType &&
-                                    face != (int)CubeWorld.Utils.Graphics.Faces.Top &&
-                                    face != (int)CubeWorld.Utils.Graphics.Faces.Bottom);
+                                    face != (int)Arkcraft.Utils.Graphics.Faces.Top &&
+                                    face != (int)Arkcraft.Utils.Graphics.Faces.Bottom);
 
 
                                 if (drawMode != nearTileDrawMode ||
