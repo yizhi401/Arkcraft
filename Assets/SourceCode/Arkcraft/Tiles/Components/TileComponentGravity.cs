@@ -5,7 +5,7 @@ using Arkcraft.Utils;
 
 namespace Arkcraft.Tiles.Components
 {
-    public class TileComponentGravity : CWComponent
+    public class TileComponentGravity : ACComponent
     {
         private DynamicTile tile;
 

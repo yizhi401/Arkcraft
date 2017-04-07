@@ -5,7 +5,7 @@ using System;
 
 namespace Arkcraft.Avatars.Components
 {
-    public class AvatarComponentIA : CWComponent
+    public class AvatarComponentIA : ACComponent
     {
         static private Random random = new Random();
 

@@ -41,7 +41,7 @@ namespace Arkcraft.Items
             return true;
         }
 
-        public InventoryEntry FindInventoryEntryFromDefinition(CWDefinition definition)
+        public InventoryEntry FindInventoryEntryFromDefinition(ACDefinition definition)
         {
             foreach (InventoryEntry entry in entries)
                 if (entry.cwobject.definition == definition)
@@ -50,12 +50,12 @@ namespace Arkcraft.Items
             return null;
         }
 
-        public bool HasMoreOfDefinition(CWDefinition definition)
+        public bool HasMoreOfDefinition(ACDefinition definition)
         {
             return FindInventoryEntryFromDefinition(definition) != null;
         }
 
-        public bool RemoveFromDefinition(CWDefinition definition, int quantity)
+        public bool RemoveFromDefinition(ACDefinition definition, int quantity)
         {
             InventoryEntry existingInventoryEntry = FindInventoryEntryFromDefinition(definition);
 
@@ -127,7 +127,7 @@ namespace Arkcraft.Items
                         //It's an item
                         Item item;
 
-                        if (itemDefinition.type == Arkcraft.World.Objects.CWDefinition.DefinitionType.ItemTile)
+                        if (itemDefinition.type == Arkcraft.World.Objects.ACDefinition.DefinitionType.ItemTile)
                             item = new ItemTile(owner.world, (ItemTileDefinition)itemDefinition, -1);
                         else
                             item = new Item(owner.world, itemDefinition, -1);

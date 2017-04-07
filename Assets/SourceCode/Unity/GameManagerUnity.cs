@@ -38,8 +38,8 @@ public class GameManagerUnity : MonoBehaviour
 
     public SectorManagerUnity sectorManagerUnity;
 
-    public CWObjectsManagerUnity objectsManagerUnity;
-    public CWFxManagerUnity fxManagerUnity;
+    public ACObjectsManagerUnity objectsManagerUnity;
+    public ACFxManagerUnity fxManagerUnity;
 
 	private float virtualWidth = 800f;
 	private float virtualHeight = 480f;
@@ -58,15 +58,15 @@ public class GameManagerUnity : MonoBehaviour
         Application.logMessageReceived += HandleLog;
 
         MeshUtils.InitStaticValues();
-        CubeWorldPlayerPreferences.LoadPreferences();
+        ArkcraftPlayerPreferences.LoadPreferences();
         PreferencesUpdated();
 
         State = state = GameManagerUnityState.MAIN_MENU;
         mainMenu = new MainMenu(this);
 
         sectorManagerUnity = new SectorManagerUnity(this);
-        objectsManagerUnity = new CWObjectsManagerUnity(this);
-        fxManagerUnity = new CWFxManagerUnity(this);
+        objectsManagerUnity = new ACObjectsManagerUnity(this);
+        fxManagerUnity = new ACFxManagerUnity(this);
 
         worldManagerUnity = new WorldManagerUnity(this);
 
@@ -382,7 +382,7 @@ public class GameManagerUnity : MonoBehaviour
     {
         if (playerUnity)
         {
-            playerUnity.mainCamera.farClipPlane = CubeWorldPlayerPreferences.farClipPlanes[CubeWorldPlayerPreferences.viewDistance];
+            playerUnity.mainCamera.farClipPlane = ArkcraftPlayerPreferences.farClipPlanes[ArkcraftPlayerPreferences.viewDistance];
         }
     }
 

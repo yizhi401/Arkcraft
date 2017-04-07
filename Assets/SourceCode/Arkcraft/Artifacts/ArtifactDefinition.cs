@@ -2,7 +2,7 @@
 
 namespace Arkcraft.Artifacts
 {
-    public class ArtifactDefinition : CWDefinition
+    public class ArtifactDefinition : ACDefinition
     {
     }
 }

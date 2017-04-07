@@ -7,7 +7,7 @@ using Arkcraft.Tiles;
 
 namespace Arkcraft.Items.Components
 {
-    public class ItemComponentGravity : CWComponent
+    public class ItemComponentGravity : ACComponent
     {
         private Item item;
 

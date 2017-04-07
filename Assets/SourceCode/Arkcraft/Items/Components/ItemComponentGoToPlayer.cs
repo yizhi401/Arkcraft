@@ -8,7 +8,7 @@ using Arkcraft.Avatars;
 
 namespace Arkcraft.Items.Components
 {
-    public class ItemComponentGoToPlayer : CWComponent
+    public class ItemComponentGoToPlayer : ACComponent
     {
         private Item item;
 
@@ -39,7 +39,7 @@ namespace Arkcraft.Items.Components
             {
                 ACObject objectToAdd = this.item;
 
-                if (objectToAdd.definition.type == CWDefinition.DefinitionType.ItemTile)
+                if (objectToAdd.definition.type == ACDefinition.DefinitionType.ItemTile)
                     objectToAdd = new DynamicTile(item.world, ((ItemTileDefinition) item.definition).tileDefinition, -1);
 
                 if (item.world.avatarManager.player.inventory.Add(objectToAdd))

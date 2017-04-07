@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class CubeWorldPlayerPreferences
+public class ArkcraftPlayerPreferences
 {
     static public int[] farClipPlanes;
     static public int viewDistance;

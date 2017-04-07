@@ -46,8 +46,8 @@ namespace Arkcraft.Serialization
 			Serializer.AddType(typeof(TileRuleSetOnFire));
 			Serializer.AddType(typeof(TileRuleSetTileType));
 			Serializer.AddType(typeof(Arkcraft.World.ArkWorld.MultiplayerConfig));
-			Serializer.AddType(typeof(CWDefinition));
-			Serializer.AddType(typeof(CWVisualDefinition));
+			Serializer.AddType(typeof(ACDefinition));
+			Serializer.AddType(typeof(ACVisualDefinition));
 		}
 	}
 }

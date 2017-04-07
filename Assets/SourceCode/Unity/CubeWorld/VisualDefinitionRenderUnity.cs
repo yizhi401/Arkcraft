@@ -11,7 +11,7 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
     static private List<Color> colors = new List<Color>();
     static private List<int> trianglesNormal = new List<int>();
 
-    public CWVisualDefinition visualDefinition;
+    public ACVisualDefinition visualDefinition;
     public Material material;
     public Arkcraft.World.ArkWorld world; 
 
@@ -98,10 +98,10 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
         meshFilter.sharedMesh = GetMeshForDefinition(visualDefinition, lightIntensity);
     }
 
-    static private Dictionary<CWVisualDefinition, Mesh> cacheBaseMeshes = new Dictionary<CWVisualDefinition, Mesh>();
-    static private Dictionary<CWVisualDefinition, Dictionary<int, Mesh>> cacheMeshes = new Dictionary<CWVisualDefinition, Dictionary<int, Mesh>>();
+    static private Dictionary<ACVisualDefinition, Mesh> cacheBaseMeshes = new Dictionary<ACVisualDefinition, Mesh>();
+    static private Dictionary<ACVisualDefinition, Dictionary<int, Mesh>> cacheMeshes = new Dictionary<ACVisualDefinition, Dictionary<int, Mesh>>();
 
-    static private Mesh GetMeshForDefinition(CWVisualDefinition visualDefinition, float lightIntensity)
+    static private Mesh GetMeshForDefinition(ACVisualDefinition visualDefinition, float lightIntensity)
     {
         int lightIntensityI = (int)(lightIntensity * 10);
         lightIntensity = (float) lightIntensityI / 10.0f;
@@ -136,7 +136,7 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
         return mesh;
     }
 
-    static private Mesh GetBaseMeshForDefinition(CWVisualDefinition visualDefinition)
+    static private Mesh GetBaseMeshForDefinition(ACVisualDefinition visualDefinition)
     {
         Mesh mesh;
 
@@ -260,7 +260,7 @@ public class VisualDefinitionRenderUnity : MonoBehaviour
     }
 
 
-    static private Texture2D[] LoadImages(CWVisualDefinition visualDefinition)
+    static private Texture2D[] LoadImages(ACVisualDefinition visualDefinition)
     {
         Texture2D[] images = new Texture2D[visualDefinition.materialCount];
         for (int i = 0; i < visualDefinition.materialCount; i++)

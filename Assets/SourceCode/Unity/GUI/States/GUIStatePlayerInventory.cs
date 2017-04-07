@@ -6,7 +6,7 @@ using Arkcraft.Tiles;
 public class GUIStatePlayerInventory : GUIState
 {
     private PlayerGUI playerGUI;
-    private Dictionary<CWDefinition, Texture2D> inventoryTextures;
+    private Dictionary<ACDefinition, Texture2D> inventoryTextures;
 
     public GUIStatePlayerInventory(PlayerGUI playerGUI)
     {
@@ -73,11 +73,11 @@ public class GUIStatePlayerInventory : GUIState
     {
         Texture2D tilesetTexture = (Texture2D) playerGUI.playerUnity.gameManagerUnity.material.mainTexture;
 
-        inventoryTextures = new Dictionary<CWDefinition, Texture2D>();
+        inventoryTextures = new Dictionary<ACDefinition, Texture2D>();
 
         foreach (Arkcraft.Items.ItemDefinition itemDefinition in playerGUI.playerUnity.gameManagerUnity.world.itemManager.itemDefinitions)
         {
-            if (itemDefinition.type == CWDefinition.DefinitionType.Item)
+            if (itemDefinition.type == ACDefinition.DefinitionType.Item)
             {
                 string materialName = "Items/" + itemDefinition.visualDefinition.material;
 

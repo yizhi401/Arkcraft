@@ -42,7 +42,7 @@ namespace Arkcraft.Items
         {
             Item item;
 
-            if (itemDefinition.type == Arkcraft.World.Objects.CWDefinition.DefinitionType.ItemTile)
+            if (itemDefinition.type == Arkcraft.World.Objects.ACDefinition.DefinitionType.ItemTile)
                 item = new ItemTile(world, (ItemTileDefinition) itemDefinition, objectId);
             else
                 item = new Item(world, itemDefinition, objectId);

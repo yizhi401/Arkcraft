@@ -11,7 +11,7 @@ namespace Arkcraft.Avatars
         public string id;
         public Vector3 offset;
         public Vector3 rotation;
-        public CWVisualDefinition visualDefinition;
+        public ACVisualDefinition visualDefinition;
 
         public void Serialize(Serializer serializer)
         {

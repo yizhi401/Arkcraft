@@ -362,9 +362,9 @@ namespace Arkcraft.Configuration
             return item;
         }
 
-        private CWVisualDefinition ParseVisualDefinition(XmlElement visualDefinitionXML)
+        private ACVisualDefinition ParseVisualDefinition(XmlElement visualDefinitionXML)
         {
-            CWVisualDefinition visualDefinition = new CWVisualDefinition();
+            ACVisualDefinition visualDefinition = new ACVisualDefinition();
 
             visualDefinition.material = GetAttributeStringValue(visualDefinitionXML, "material");
             visualDefinition.materialCount = GetAttributeIntValue(visualDefinitionXML, "materialCount", 1);

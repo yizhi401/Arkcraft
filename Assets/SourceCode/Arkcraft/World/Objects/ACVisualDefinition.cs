@@ -5,7 +5,7 @@ using Arkcraft.Serialization;
 
 namespace Arkcraft.World.Objects
 {
-    public class CWVisualDefinition : ISerializable
+    public class ACVisualDefinition : ISerializable
     {
         public Vector3 pivot;
 

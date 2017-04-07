@@ -9,31 +9,31 @@ namespace Arkcraft.World.Objects
 	{
         public int objectId;
 		public ArkWorld world;
-		public CWDefinition definition;
+		public ACDefinition definition;
 
 		public Vector3 position;
         public Vector3 rotation;
         public byte energy;
 		public bool destroyed;
 
-        private List<CWComponent> components;
+        private List<ACComponent> components;
 
         public ACObject(int objectId)
         {
             this.objectId = objectId;
         }
 
-        public void AddComponent(CWComponent component)
+        public void AddComponent(ACComponent component)
         {
             if (components == null)
-                components = new List<CWComponent>();
+                components = new List<ACComponent>();
 
             components.Add(component);
 
             component.AddedToObject(this);
         }
 
-        public void RemoveComponent(CWComponent component)
+        public void RemoveComponent(ACComponent component)
         {
             components.Remove(component);
 
@@ -44,7 +44,7 @@ namespace Arkcraft.World.Objects
         {
             if (components != null)
             {
-                foreach (CWComponent component in components)
+                foreach (ACComponent component in components)
                     component.RemovedFromObject();
 
                 components.Clear();
@@ -56,7 +56,7 @@ namespace Arkcraft.World.Objects
         public virtual void Update(float deltaTime)
         {
             if (components != null)
-                foreach (CWComponent component in components)
+                foreach (ACComponent component in components)
                     component.Update(deltaTime);
         }
 

@@ -7,7 +7,7 @@ using Arkcraft.World.Objects;
 using Arkcraft.Items;
 using Arkcraft.Avatars;
 
-public class CWObjectsManagerUnity : IACListener
+public class ACObjectsManagerUnity : IACListener
 {
     private List<TileUnity> unityTiles = new List<TileUnity>();
 	private List<ItemUnity> unityItems = new List<ItemUnity>();
@@ -18,7 +18,7 @@ public class CWObjectsManagerUnity : IACListener
 
 	private GameManagerUnity gameManagerUnity;
 	
-	public CWObjectsManagerUnity (GameManagerUnity gameManagerUnity)
+	public ACObjectsManagerUnity (GameManagerUnity gameManagerUnity)
 	{
 		this.gameManagerUnity = gameManagerUnity;
 	}
@@ -147,19 +147,19 @@ public class CWObjectsManagerUnity : IACListener
 		
 		switch(cwObject.definition.type)
 		{
-            case CWDefinition.DefinitionType.Item:
+            case ACDefinition.DefinitionType.Item:
                 go = CreateItemGameObject((Item) cwObject);
 				break;
 			
-			case CWDefinition.DefinitionType.Tile:
+			case ACDefinition.DefinitionType.Tile:
 				go = CreateTileGameObject((DynamicTile) cwObject);
 				break;
 			
-            case CWDefinition.DefinitionType.ItemTile:
+            case ACDefinition.DefinitionType.ItemTile:
                 go = CreateItemTileGameObject((ItemTile) cwObject);
                 break;
 
-            case CWDefinition.DefinitionType.Avatar:
+            case ACDefinition.DefinitionType.Avatar:
                 go = CreateAvatarGameObject((Arkcraft.Avatars.Avatar) cwObject);
                 break;
            

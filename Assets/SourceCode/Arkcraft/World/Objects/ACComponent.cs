@@ -1,6 +1,6 @@
 ﻿namespace Arkcraft.World.Objects
 {
-    public class CWComponent
+    public class ACComponent
     {
         protected ACObject cwobject;
 

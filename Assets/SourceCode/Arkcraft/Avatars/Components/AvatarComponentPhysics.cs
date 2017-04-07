@@ -5,7 +5,7 @@ using System;
 
 namespace Arkcraft.Avatars.Components
 {
-    public class AvatarComponentPhysics : CWComponent
+    public class AvatarComponentPhysics : ACComponent
     {
         private Avatar avatar;
 

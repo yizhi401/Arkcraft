@@ -6,7 +6,7 @@ using Arkcraft.Serialization;
 
 namespace Arkcraft.Avatars
 {
-	public class AvatarDefinition : CWDefinition
+	public class AvatarDefinition : ACDefinition
 	{
         public TilePosition sizeInTiles;
         public AvatarPartDefinition[] parts;

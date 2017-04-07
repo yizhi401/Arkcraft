@@ -128,13 +128,13 @@ public class PlayerControllerUnity : MonoBehaviour
 
                 switch (currentObjectInHand.definition.type)
                 {
-                    case CWDefinition.DefinitionType.Item:
+                    case ACDefinition.DefinitionType.Item:
                         positionHand_Current = positionHand_Item;
                         scaleHand_Current = scaleHand_Item;
                         rotationHand_Current = rotationHand_Item;
                         break;
 
-                    case CWDefinition.DefinitionType.Tile:
+                    case ACDefinition.DefinitionType.Tile:
                         positionHand_Current = positionHand_Tile;
                         scaleHand_Current = scaleHand_Tile;
                         rotationHand_Current = rotationHand_Tile;
@@ -174,11 +174,11 @@ public class PlayerControllerUnity : MonoBehaviour
 
                 switch (currentObjectInHand.definition.type)
                 {
-                    case CWDefinition.DefinitionType.Tile:
+                    case ACDefinition.DefinitionType.Tile:
                         hand.transform.localRotation = rotationHand_Current * Quaternion.Euler(deltaRotation, 0, 0);
                         break;
 
-                    case CWDefinition.DefinitionType.Item:
+                    case ACDefinition.DefinitionType.Item:
                         hand.transform.localRotation = rotationHand_Current * Quaternion.Euler(0, 0, deltaRotation);
                         break;
                 }
@@ -243,7 +243,7 @@ public class PlayerControllerUnity : MonoBehaviour
                                 {
                                     switch (playerUnity.objectInHand.definition.type)
                                     {
-                                        case CWDefinition.DefinitionType.Item:
+                                        case ACDefinition.DefinitionType.Item:
                                         {
                                             playerUnity.gameManagerUnity.fxManagerUnity.PlaySound("hitmetal", playerUnity.player.position);
                                             playerUnity.player.world.gameplay.TileHit(raycastResult.position, ((Item)playerUnity.objectInHand).itemDefinition);
@@ -262,7 +262,7 @@ public class PlayerControllerUnity : MonoBehaviour
                     }
                     else if (Input.GetMouseButton(1))
                     {
-                        if (playerUnity.objectInHand != null && playerUnity.objectInHand.definition.type == CWDefinition.DefinitionType.Tile)
+                        if (playerUnity.objectInHand != null && playerUnity.objectInHand.definition.type == ACDefinition.DefinitionType.Tile)
                         {
                             TileDefinition tileDefinition = (TileDefinition) playerUnity.objectInHand.definition;
                             TilePosition tileCreatePosition = raycastResult.position + Arkcraft.Utils.Graphics.GetFaceNormal(raycastResult.face);

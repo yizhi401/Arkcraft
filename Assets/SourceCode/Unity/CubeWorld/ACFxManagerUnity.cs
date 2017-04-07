@@ -5,7 +5,7 @@ using Arkcraft.Tiles;
 using Arkcraft.World.Objects;
 using Arkcraft.Items;
 
-public class CWFxManagerUnity : IACFxListener
+public class ACFxManagerUnity : IACFxListener
 {
     private GameObject goContainer;
     private GameManagerUnity gameManagerUnity;
@@ -13,7 +13,7 @@ public class CWFxManagerUnity : IACFxListener
     private Dictionary<string, GameObject> effects = new Dictionary<string, GameObject>();
     private Dictionary<string, System.Type> effectsComponents = new Dictionary<string, System.Type>();
 
-    public CWFxManagerUnity(GameManagerUnity gameManagerUnity)
+    public ACFxManagerUnity(GameManagerUnity gameManagerUnity)
     {
         this.gameManagerUnity = gameManagerUnity;
 

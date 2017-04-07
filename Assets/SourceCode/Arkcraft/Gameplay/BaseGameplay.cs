@@ -86,7 +86,7 @@ namespace Arkcraft.Gameplay
         {
             foreach (ItemDefinition itemDefinition in world.itemManager.itemDefinitions)
             {
-                if (itemDefinition.type != Arkcraft.World.Objects.CWDefinition.DefinitionType.ItemTile)
+                if (itemDefinition.type != Arkcraft.World.Objects.ACDefinition.DefinitionType.ItemTile)
                 {
                     Item item = new Item(world, itemDefinition, -1);
 

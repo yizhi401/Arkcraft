@@ -70,17 +70,17 @@ public class GUIStatePlayerNormal : GUIState
     {
         int offsetY = 0;
 
-        if (CubeWorldPlayerPreferences.showFPS)
+        if (ArkcraftPlayerPreferences.showFPS)
             GUI.Label(new Rect(0, offsetY++ * 20, Screen.width, 25), "FPS: " + playerGUI.lastFps);
 
-        if (CubeWorldPlayerPreferences.showHelp)
+        if (ArkcraftPlayerPreferences.showHelp)
         {
             GUI.Box(new Rect(0, offsetY * 20, 300, 100), "");
             GUI.Label(new Rect(0, offsetY * 20, 300, 100), "Press 'I' to enter Inventory\nRight click to add objects\nLeft click to activate / destroy them\nYou can disable this dialog from the options screen! (press ESCAPE)");
             offsetY += 5;
         }
 
-        if (CubeWorldPlayerPreferences.showEngineStats)
+        if (ArkcraftPlayerPreferences.showEngineStats)
         {
             Arkcraft.World.ArkWorldStats stats = playerGUI.playerUnity.player.world.stats;
             string memStats = "Memory used: " + (System.GC.GetTotalMemory(false) / (1024 * 1024)) + " MB";
@@ -93,7 +93,7 @@ public class GUIStatePlayerNormal : GUIState
 
         if (showLog)
         {
-            GUI.TextArea(new Rect(0, offsetY * 20, Screen.width, 200), CWConsole.Singleton.TextLog);
+            GUI.TextArea(new Rect(0, offsetY * 20, Screen.width, 200), ACConsole.Singleton.TextLog);
             offsetY += 10;
         }
 

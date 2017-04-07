@@ -394,67 +394,67 @@ public class MainMenu
         optionsMenu.SetActive(true);
 
         Button distance = optionsMenu.transform.FindChild("Distance").GetComponent<Button>();
-        distance.GetComponentInChildren<Text>().text = "Draw Distance: " + CubeWorldPlayerPreferences.farClipPlanes[CubeWorldPlayerPreferences.viewDistance];
+        distance.GetComponentInChildren<Text>().text = "Draw Distance: " + ArkcraftPlayerPreferences.farClipPlanes[ArkcraftPlayerPreferences.viewDistance];
         distance.onClick.RemoveAllListeners();
         distance.onClick.AddListener(delegate()
         {
-            CubeWorldPlayerPreferences.viewDistance = (CubeWorldPlayerPreferences.viewDistance + 1) % CubeWorldPlayerPreferences.farClipPlanes.Length;
+            ArkcraftPlayerPreferences.viewDistance = (ArkcraftPlayerPreferences.viewDistance + 1) % ArkcraftPlayerPreferences.farClipPlanes.Length;
 
             if (gameManagerUnity.playerUnity)
-                gameManagerUnity.playerUnity.mainCamera.farClipPlane = CubeWorldPlayerPreferences.farClipPlanes[CubeWorldPlayerPreferences.viewDistance];
+                gameManagerUnity.playerUnity.mainCamera.farClipPlane = ArkcraftPlayerPreferences.farClipPlanes[ArkcraftPlayerPreferences.viewDistance];
             
-            distance.GetComponentInChildren<Text>().text = "Draw Distance: " + CubeWorldPlayerPreferences.farClipPlanes[CubeWorldPlayerPreferences.viewDistance];
+            distance.GetComponentInChildren<Text>().text = "Draw Distance: " + ArkcraftPlayerPreferences.farClipPlanes[ArkcraftPlayerPreferences.viewDistance];
         });
 
         Button help = optionsMenu.transform.FindChild("Help").GetComponent<Button>();
         help.onClick.RemoveAllListeners();
-        help.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
+        help.GetComponentInChildren<Text>().text = "Show Help: " + ArkcraftPlayerPreferences.showHelp;
         help.onClick.AddListener(delegate()
         {
-            CubeWorldPlayerPreferences.showHelp = !CubeWorldPlayerPreferences.showHelp;
-            help.GetComponentInChildren<Text>().text = "Show Help: " + CubeWorldPlayerPreferences.showHelp;
+            ArkcraftPlayerPreferences.showHelp = !ArkcraftPlayerPreferences.showHelp;
+            help.GetComponentInChildren<Text>().text = "Show Help: " + ArkcraftPlayerPreferences.showHelp;
         });
 
         Button fps = optionsMenu.transform.FindChild("FPS").GetComponent<Button>();
-        fps.GetComponentInChildren<Text>().text = "Show FPS: " + CubeWorldPlayerPreferences.showFPS;
+        fps.GetComponentInChildren<Text>().text = "Show FPS: " + ArkcraftPlayerPreferences.showFPS;
         fps.onClick.RemoveAllListeners();
         fps.onClick.AddListener(delegate()
         {
-            CubeWorldPlayerPreferences.showFPS = !CubeWorldPlayerPreferences.showFPS;
-            fps.GetComponentInChildren<Text>().text = "Show FPS: " + CubeWorldPlayerPreferences.showFPS;
+            ArkcraftPlayerPreferences.showFPS = !ArkcraftPlayerPreferences.showFPS;
+            fps.GetComponentInChildren<Text>().text = "Show FPS: " + ArkcraftPlayerPreferences.showFPS;
  
         });
 
         Button engineState = optionsMenu.transform.FindChild("EngineState").GetComponent<Button>();
-        engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
+        engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + ArkcraftPlayerPreferences.showEngineStats;
         engineState.onClick.RemoveAllListeners();
         engineState.onClick.AddListener(delegate()
         {
-            CubeWorldPlayerPreferences.showEngineStats = !CubeWorldPlayerPreferences.showEngineStats;
-            engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + CubeWorldPlayerPreferences.showEngineStats;
+            ArkcraftPlayerPreferences.showEngineStats = !ArkcraftPlayerPreferences.showEngineStats;
+            engineState.GetComponentInChildren<Text>().text = "Show Engine Stats: " + ArkcraftPlayerPreferences.showEngineStats;
         });
 
         Button strategy = optionsMenu.transform.FindChild("Strategy").GetComponent<Button>();
-        strategy.GetComponentInChildren<Text>().text = "Visible Strategy: " + System.Enum.GetName(typeof(SectorManagerUnity.VisibleStrategy), CubeWorldPlayerPreferences.visibleStrategy);
+        strategy.GetComponentInChildren<Text>().text = "Visible Strategy: " + System.Enum.GetName(typeof(SectorManagerUnity.VisibleStrategy), ArkcraftPlayerPreferences.visibleStrategy);
         strategy.onClick.RemoveAllListeners();
         strategy.onClick.AddListener(delegate()
         {
-            if (System.Enum.IsDefined(typeof(SectorManagerUnity.VisibleStrategy), (int)CubeWorldPlayerPreferences.visibleStrategy + 1))
+            if (System.Enum.IsDefined(typeof(SectorManagerUnity.VisibleStrategy), (int)ArkcraftPlayerPreferences.visibleStrategy + 1))
             {
-                CubeWorldPlayerPreferences.visibleStrategy = CubeWorldPlayerPreferences.visibleStrategy + 1;
+                ArkcraftPlayerPreferences.visibleStrategy = ArkcraftPlayerPreferences.visibleStrategy + 1;
             }
             else
             {
-                CubeWorldPlayerPreferences.visibleStrategy = 0;
+                ArkcraftPlayerPreferences.visibleStrategy = 0;
             }
-            strategy.GetComponentInChildren<Text>().text = "Visible Strategy: " + System.Enum.GetName(typeof(SectorManagerUnity.VisibleStrategy), CubeWorldPlayerPreferences.visibleStrategy);
+            strategy.GetComponentInChildren<Text>().text = "Visible Strategy: " + System.Enum.GetName(typeof(SectorManagerUnity.VisibleStrategy), ArkcraftPlayerPreferences.visibleStrategy);
         });
 
         Button back = optionsMenu.transform.FindChild("Back").GetComponent<Button>();
         back.onClick.RemoveAllListeners();
         back.onClick.AddListener(delegate()
         {
-            CubeWorldPlayerPreferences.StorePreferences();
+            ArkcraftPlayerPreferences.StorePreferences();
 
             gameManagerUnity.PreferencesUpdated();
 

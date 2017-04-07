@@ -3,7 +3,7 @@ using Arkcraft.Serialization;
 
 namespace Arkcraft.World.Objects
 {
-	public class CWDefinition : ISerializable
+	public class ACDefinition : ISerializable
 	{
 		public enum DefinitionType
 		{
@@ -19,11 +19,11 @@ namespace Arkcraft.World.Objects
 		
 		public int energy;
 
-        public CWDefinition()
+        public ACDefinition()
         {
         }
 
-        public CWDefinition(DefinitionType definitionType)
+        public ACDefinition(DefinitionType definitionType)
 		{
 			this.type = definitionType;
 		}

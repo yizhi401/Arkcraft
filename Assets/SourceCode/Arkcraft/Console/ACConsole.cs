@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Arkcraft.Console
 {
-    public class CWConsole : ICWConsoleListener
+    public class ACConsole : IACConsoleListener
     {
         private StringBuilder log = new StringBuilder("");
         private string logCopy = null;
@@ -21,7 +21,7 @@ namespace Arkcraft.Console
             }
         }
 
-        public ICWConsoleListener listener;
+        public IACConsoleListener listener;
         public enum LogLevel
         {
             Info,
@@ -29,18 +29,18 @@ namespace Arkcraft.Console
             Error
         }
 
-        private CWConsole()
+        private ACConsole()
         {
         }
 
-        static private CWConsole singleton;
+        static private ACConsole singleton;
 
-        static public CWConsole Singleton
+        static public ACConsole Singleton
         {
-            get { if (singleton == null) singleton = new CWConsole(); return singleton; }
+            get { if (singleton == null) singleton = new ACConsole(); return singleton; }
         }
 
-        public void Log(CWConsole.LogLevel level, string message)
+        public void Log(ACConsole.LogLevel level, string message)
         {
             log.AppendLine(level.ToString() + " : " + message);
             logCopy = null;

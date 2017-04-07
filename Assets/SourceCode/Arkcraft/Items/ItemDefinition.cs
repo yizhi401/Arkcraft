@@ -5,7 +5,7 @@ using Arkcraft.Serialization;
 
 namespace Arkcraft.Items
 {
-	public class ItemDefinition : CWDefinition
+	public class ItemDefinition : ACDefinition
 	{
 		public ItemDefinition()
 			: base(DefinitionType.Item)
@@ -19,7 +19,7 @@ namespace Arkcraft.Items
 
         }
 
-        public CWVisualDefinition visualDefinition;
+        public ACVisualDefinition visualDefinition;
 		
 		public int durability;
 		public int damage;

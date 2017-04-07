@@ -110,11 +110,11 @@ public class SectorManagerUnity
 
     public void UpdateVisibleSectors()
     {
-        if (activeVisibleStrategy != CubeWorldPlayerPreferences.visibleStrategy || visibleStrategy == null)
+        if (activeVisibleStrategy != ArkcraftPlayerPreferences.visibleStrategy || visibleStrategy == null)
         {
             Clear();
 
-            activeVisibleStrategy = CubeWorldPlayerPreferences.visibleStrategy;
+            activeVisibleStrategy = ArkcraftPlayerPreferences.visibleStrategy;
 
             switch (activeVisibleStrategy)
             {

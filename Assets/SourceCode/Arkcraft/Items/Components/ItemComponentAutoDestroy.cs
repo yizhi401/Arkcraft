@@ -7,7 +7,7 @@ using Arkcraft.Tiles;
 
 namespace Arkcraft.Items.Components
 {
-    public class ItemComponentAutoDestroy : CWComponent
+    public class ItemComponentAutoDestroy : ACComponent
     {
         private Item item;
 

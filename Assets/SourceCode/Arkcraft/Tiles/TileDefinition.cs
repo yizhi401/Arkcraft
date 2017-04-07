@@ -4,7 +4,7 @@ using Arkcraft.World.Objects;
 using Arkcraft.Serialization;
 namespace Arkcraft.Tiles
 {
-    public class TileDefinition : CWDefinition
+    public class TileDefinition : ACDefinition
     {
 		public TileDefinition()
 			: base(DefinitionType.Tile)

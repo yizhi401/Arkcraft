@@ -43,7 +43,7 @@ namespace Arkcraft.Gameplay.Multiplayer
             }
             catch (Exception ex)
             {
-                CWConsole.LogError(ex.ToString());
+                ACConsole.LogError(ex.ToString());
             }
 
             List<MultiplayerClient> clientsToRemove = new List<MultiplayerClient>();
@@ -58,7 +58,7 @@ namespace Arkcraft.Gameplay.Multiplayer
                 catch (Exception ex)
                 {
                     clientsToRemove.Add(client);
-                    CWConsole.LogError(ex.ToString());
+                    ACConsole.LogError(ex.ToString());
                 }
             }
 
@@ -70,7 +70,7 @@ namespace Arkcraft.Gameplay.Multiplayer
                 }
                 catch (Exception ex)
                 {
-                    CWConsole.LogError(ex.ToString());
+                    ACConsole.LogError(ex.ToString());
                 }
                 clients.Remove(client);
 

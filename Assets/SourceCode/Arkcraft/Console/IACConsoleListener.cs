@@ -5,8 +5,8 @@ using System.Text;
 
 namespace Arkcraft.Console
 {
-    public interface ICWConsoleListener
+    public interface IACConsoleListener
     {
-        void Log(CWConsole.LogLevel level, string message);
+        void Log(ACConsole.LogLevel level, string message);
     }
 }
